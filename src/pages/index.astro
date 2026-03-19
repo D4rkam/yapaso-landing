@@ -1,11 +1,52 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+// src/pages/index.astro
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Beneficios from "../components/Beneficios.astro";
+import ComoFunciona from "../components/ComoFunciona.astro";
+import Equipo from "../components/Equipo.astro";
+import Contacto from "../components/Contacto.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Datos para el Schema.org (puedes ajustarlos luego)
+const appSchema = {
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  name: "Ya Paso",
+  operatingSystem: "Android, iOS",
+  applicationCategory: "FoodShoppingApplication",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "ARS",
+  },
+  description: "App para pedir comida en el buffet sin hacer filas.",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5",
+    reviewCount: "10",
+  },
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="Ya Paso | Comprá en el buffet sin hacer fila"
+  description="Ya Paso es la app para estudiantes que te permite pedir y pagar tu comida en el buffet desde el celular. Evitá las filas y disfrutá más tu recreo."
+>
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify(appSchema)}
+  />
+
+  <Header />
+
+  <main>
+    <Hero />
+
+    <Beneficios />
+    <ComoFunciona />
+    <!-- <Equipo /> -->
+    <Contacto />
+  </main>
 </Layout>

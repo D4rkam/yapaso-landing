@@ -1,0 +1,219 @@
+---
+// src/components/Beneficios.astro
+import { Image } from "astro:assets";
+import balanzaImg from "../assets/balanza.png";
+import doblePhoneImg from "../assets/doble-phone.png";
+import personaImg from "../assets/persona.png";
+import relojImg from "../assets/reloj.png";
+import logoYapaso from "../assets/ylogo-brazos-blancos.png";
+---
+
+<section
+  id="beneficios"
+  class="py-20 md:py-32 bg-white max-w-7xl mx-auto px-6 overflow-x-hidden scroll-mt-20"
+>
+  <div class="mb-24" data-animate-trigger>
+    <div
+      class="opacity-0 translate-y-10 transition-all duration-700 ease-out animation-target"
+    >
+      <h2
+        class="font-balsamiq text-4xl md:text-5xl lg:text-6xl font-extrabold text-yapaso-dark leading-tight"
+      >
+        El recreo dura poco... <br />
+        <span
+          class="bg-yapaso-yellow px-4 py-1 rounded-2xl inline-block transform -rotate-1 mt-2"
+          >pero la fila dura más</span
+        >
+      </h2>
+      <p
+        class="text-gray-500 mt-8 text-xl md:text-2xl font-medium max-w-2xl leading-relaxed"
+      >
+        En la mayoría de los colegios el recreo dura 10-15 minutos. <br />
+        Pero cuando llegás al buffet te encontrás con esto:
+      </p>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-24 md:gap-32">
+    <div class="flex justify-start" data-animate-trigger>
+      <article
+        class="opacity-0 -translate-x-20 transition-all duration-700 ease-out animation-target bg-yapaso-yellow rounded-[40px] p-8 md:p-12 w-full md:w-[550px] aspect-[4/3] min-h-[260px] flex flex-col justify-between shadow-xl relative group"
+      >
+        <div>
+          <h3
+            class="font-spacegrotesk text-3xl md:text-4xl font-bold text-yapaso-dark leading-tight"
+          >
+            Perdemos hasta el <br />
+            <span class="bg-white px-2 py-0.5 rounded-lg">50% del recreo</span> en
+            la fila
+          </h3>
+        </div>
+        <div
+          class="self-end transform group-hover:scale-110 transition-transform duration-500"
+        >
+          <Image
+            src={relojImg}
+            alt="Reloj"
+            class="w-32 md:w-44 h-auto object-contain"
+          />
+        </div>
+      </article>
+    </div>
+
+    <div class="flex justify-end" data-animate-trigger>
+      <article
+        class="opacity-0 translate-x-20 transition-all duration-700 ease-out animation-target bg-yapaso-dark rounded-[40px] p-8 md:p-12 w-full md:w-[550px] aspect-[4/3] min-h-[260px] flex flex-col justify-between shadow-2xl relative group"
+      >
+        <div>
+          <h3
+            class="font-spacegrotesk text-3xl md:text-4xl font-bold text-white leading-tight"
+          >
+            Si llegamos tarde, <br />
+            <span class="underline decoration-yapaso-yellow underline-offset-8"
+              >nos puede retar</span
+            >
+          </h3>
+        </div>
+        <div
+          class="self-end transform group-hover:-translate-x-4 transition-transform duration-500"
+        >
+          <Image
+            src={personaImg}
+            alt="Alumno llegando tarde"
+            class="w-40 md:w-56 h-auto object-contain"
+          />
+        </div>
+      </article>
+    </div>
+
+    <div class="flex justify-start" data-animate-trigger>
+      <article
+        class="opacity-0 -translate-x-20 transition-all duration-700 ease-out animation-target bg-yapaso-light-green rounded-[40px] p-8 md:p-12 w-full md:w-[550px] aspect-[4/3] min-h-[260px] flex flex-col justify-between shadow-lg relative group border border-yapaso-dark/5"
+      >
+        <div>
+          <h3
+            class="font-spacegrotesk text-2xl md:text-3xl font-medium text-yapaso-dark leading-snug"
+          >
+            Tenemos que <span class="font-bold">elegir</span>: comprar, ir al
+            baño o disfrutar el recreo
+          </h3>
+        </div>
+        <div
+          class="self-center transform group-hover:rotate-12 transition-transform duration-500"
+        >
+          <Image
+            src={balanzaImg}
+            alt="Balanza de decisiones"
+            class="w-48 md:w-64 h-auto object-contain"
+          />
+        </div>
+      </article>
+    </div>
+
+    <div data-animate-trigger>
+      <article
+        class="opacity-0 translate-y-20 transition-all duration-1000 ease-out animation-target bg-yapaso-yellow rounded-[50px] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 shadow-2xl overflow-x-hidden relative group min-h-[260px]"
+      >
+        <div class="flex-1 z-10">
+          <div class="flex items-center gap-4 mb-8">
+            <h3
+              class="font-balsamiq text-3xl md:text-5xl font-bold text-yapaso-dark"
+            >
+              Pero ahora con <span
+                class="font-lobster text-4xl md:text-[3.5rem] inline-block ml-2"
+                >Ya Paso</span
+              >
+            </h3>
+          </div>
+          <p
+            class="font-spacegrotesk text-xl md:text-2xl text-yapaso-dark/90 leading-relaxed max-w-xl"
+          >
+            Comprá en segundos desde tu celular y retirá sin hacer fila, sin
+            esperar y sin perder tiempo de tu recreo
+          </p>
+        </div>
+
+        <div class="relative w-full md:w-1/2 flex justify-center items-center">
+          <div
+            class="absolute -top-12 left-0 right-0 mx-auto w-fit z-20 bg-white/90 backdrop-blur p-4 rounded-3xl shadow-xl flex items-center gap-4 border border-white animate-bounce-slow"
+          >
+            <div
+              class="w-10 h-10 bg-yapaso-yellow rounded-xl flex items-center justify-center p-1"
+            >
+              <Image src={logoYapaso} alt="App" class="w-full h-auto" />
+            </div>
+            <div>
+              <p class="text-xs font-bold text-gray-400 uppercase">Ya Paso</p>
+              <p class="text-sm font-bold text-yapaso-dark">
+                ¡Tu pedido está listo para retirar! 🤩✅
+              </p>
+            </div>
+          </div>
+          <Image
+            src={doblePhoneImg}
+            alt="Celulares Ya Paso"
+            class="w-[280px] md:w-[400px] h-auto drop-shadow-2xl transform group-hover:scale-105 transition-transform duration-700"
+          />
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<script>
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px",
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Buscamos el hijo que realmente tiene la animación
+        const target = entry.target.querySelector(".animation-target");
+
+        if (target) {
+          target.classList.remove(
+            "opacity-0",
+            "translate-y-10",
+            "translate-y-20",
+            "-translate-x-20",
+            "translate-x-20",
+          );
+          target.classList.add("opacity-100", "translate-x-0", "translate-y-0");
+        }
+
+        // Dejamos de observar el contenedor PADRE (estático)
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document
+    .querySelectorAll("[data-animate-trigger]")
+    .forEach((el) => observer.observe(el));
+</script>
+
+<style>
+  @keyframes bounce-slow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  .animate-bounce-slow {
+    animation: bounce-slow 4s ease-in-out infinite;
+  }
+
+  .animation-target {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+  }
+
+  #beneficios {
+    scroll-margin-top: 5rem;
+  }
+</style>

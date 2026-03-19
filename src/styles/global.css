@@ -1,0 +1,55 @@
+/* src/styles/global.css */
+@import "tailwindcss";
+
+/* Definimos las fuentes para Tailwind v4 usando las que ya tenés cargadas */
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('/fonts/SpaceGrotesk-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('/fonts/SpaceGrotesk-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lobster';
+  src: url('/fonts/Lobster-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@theme {
+  /* Paleta de colores exactos */
+  --color-yapaso-yellow: #FFE500;
+  --color-yapaso-dark: #1A1A1A;
+  --color-yapaso-light-blue: #AAC4FA; /* Azul pastel de los acentos */
+  
+  /* Fuentes configuradas */
+  --font-sans: 'Space Grotesk', sans-serif;
+  --font-lobster: 'Lobster', cursive;
+
+  /* Animaciones custom para el Hero */
+  --animate-orbit: dash 25s linear infinite;
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-float-delayed: float 4s ease-in-out 2s infinite;
+}
+
+/* Keyframes para que la línea punteada gire continuamente */
+@keyframes dash {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: 500; }
+}
+
+/* Keyframes para que las estrellas floten suavemente */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+body {
+  font-family: var(--font-sans);
+  @apply antialiased bg-white text-yapaso-dark;
+}

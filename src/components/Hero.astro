@@ -1,0 +1,206 @@
+---
+// src/components/Hero.astro
+import { Image } from "astro:assets";
+// Reemplazá por tu asset real en src/assets/hero-phone.png
+import phoneMockup from "../assets/hero-phone.png";
+---
+
+<section
+  class="relative bg-white pt-10 pb-20 md:pt-16 md:pb-32 overflow-hidden"
+>
+  <div
+    class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center h-full"
+  >
+    <div
+      class="text-center md:text-left z-30 flex flex-col items-center md:items-start"
+    >
+      <div class="flex items-center gap-2.5 mb-5">
+        <div class="w-3 h-3 rounded-full bg-yapaso-yellow"></div>
+        <svg
+          class="w-6 h-6 text-yapaso-yellow"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path
+            d="M12 0C12 6 18 12 24 12C18 12 12 18 12 24C12 18 6 12 0 12C6 12 12 6 12 0Z"
+          ></path>
+        </svg>
+      </div>
+
+      <h1
+        class="font-lobster text-[3.8rem] md:text-[5.5rem] lg:text-[6.5rem] text-yapaso-dark leading-[1.05] tracking-wide drop-shadow-sm"
+      >
+        Comprá en el buffet <br />
+        sin hacer fila
+      </h1>
+
+      <p
+        class="mt-8 text-xl md:text-2xl text-yapaso-dark font-medium max-w-lg leading-relaxed"
+      >
+        Pedí desde tu celular y <br /> retiralo cuando esté listo
+      </p>
+
+      <div class="mt-10">
+        <a
+          id="hero-cta-button"
+          href="https://app.yapaso.com.ar"
+          class="inline-block bg-yapaso-yellow text-yapaso-dark font-bold text-xl md:text-2xl px-10 py-5 rounded-full shadow-[0_10px_30px_rgba(255,229,0,0.4)] hover:bg-yapaso-dark hover:text-white hover:scale-105 transition-all duration-300"
+        >
+          Acceder a la App
+        </a>
+      </div>
+    </div>
+
+    <div
+      class="relative flex justify-center items-center mt-16 md:mt-0 w-full min-h-[500px]"
+    >
+      <div
+        class="absolute inset-0 flex items-center justify-center pointer-events-none scale-125 md:scale-150 z-0"
+      >
+        <div
+          class="absolute -top-16 -left-16 flex items-end gap-3 rotate-[20deg]"
+        >
+          <div class="w-14 h-14 rounded-full bg-yapaso-yellow drop-shadow-md">
+          </div>
+          <div class="w-8 h-8 rounded-full bg-yapaso-yellow drop-shadow-sm">
+          </div>
+        </div>
+
+        <div
+          class="absolute inset-0 z-0 [clip-path:polygon(0_0,100%_0,100%_48%,0_48%)]"
+        >
+          <svg viewBox="0 0 400 400" class="w-full h-full opacity-60">
+            <g transform="translate(200,200) rotate(-15)">
+              <ellipse
+                cx="0"
+                cy="0"
+                rx="140"
+                ry="60"
+                fill="none"
+                stroke="#D1D5DB"
+                stroke-width="1.5"></ellipse>
+              <ellipse
+                cx="0"
+                cy="0"
+                rx="180"
+                ry="80"
+                fill="none"
+                stroke="#9CA3AF"
+                stroke-width="1.2"></ellipse>
+              <g class="animate-orbit">
+                <ellipse
+                  cx="0"
+                  cy="0"
+                  rx="140"
+                  ry="60"
+                  fill="none"
+                  stroke="#9CA3AF"
+                  stroke-width="1.2"
+                  stroke-dasharray="6 6"></ellipse>
+                <circle cx="140" cy="0" r="4" fill="#FFE500"></circle>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="relative z-10 animate-float-phone">
+        <Image
+          src={phoneMockup}
+          alt="App Ya Paso"
+          class="w-[260px] md:w-[310px] lg:w-[340px] h-auto drop-shadow-[0_25px_35px_rgba(0,0,0,0.2)] hover:scale-[1.02] transition-transform duration-500"
+          width={720}
+          height={1440}
+          loading="eager"
+        />
+      </div>
+
+      <div
+        class="absolute inset-0 flex items-center justify-center pointer-events-none scale-125 md:scale-150 z-20"
+      >
+        <div
+          class="absolute inset-0 z-20 [clip-path:polygon(0_48%,100%_48%,100%_100%,0_100%)]"
+        >
+          <svg viewBox="0 0 400 400" class="w-full h-full opacity-60">
+            <g transform="translate(200,200) rotate(-15)">
+              <ellipse
+                cx="0"
+                cy="0"
+                rx="140"
+                ry="60"
+                fill="none"
+                stroke="#D1D5DB"
+                stroke-width="1.5"></ellipse>
+              <g class="animate-orbit" style="animation-duration: 30s;">
+                <ellipse
+                  cx="0"
+                  cy="0"
+                  rx="180"
+                  ry="80"
+                  fill="none"
+                  stroke="#9CA3AF"
+                  stroke-width="1.2"
+                  stroke-dasharray="6 6"></ellipse>
+                <rect x="175" y="-5" width="12" height="8" rx="2" fill="#FFE500"
+                ></rect>
+              </g>
+              <g transform="translate(100, 120)">
+                <path
+                  d="M12 0C12 6 18 12 24 12C18 12 12 18 12 24C12 18 6 12 0 12C6 12 12 6 12 0Z"
+                  fill="#FFE500"
+                  class="animate-pulse"></path>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Detección de plataforma para el botón del Hero
+  const btn = document.getElementById("hero-cta-button") as HTMLAnchorElement;
+
+  if (btn) {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isAndroid = /android/i.test(userAgent);
+
+    if (isAndroid) {
+      btn.innerText = "Descargar App";
+      // Aquí pondrías el link al APK o Play Store cuando lo tengas
+      btn.href = "#instalar";
+    } else {
+      // Para IOS, Windows, etc.
+      btn.innerText = "Acceder a la App";
+      btn.href = "https://app.yapaso.app";
+    }
+  }
+</script>
+
+<style>
+  .animate-orbit {
+    animation: orbit 20s linear infinite;
+    transform-origin: center;
+  }
+  @keyframes orbit {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .animate-float-phone {
+    animation: float-phone 5s ease-in-out infinite;
+  }
+  @keyframes float-phone {
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-15px) rotate(1.5deg);
+    }
+  }
+</style>

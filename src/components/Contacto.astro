@@ -1,0 +1,114 @@
+---
+// src/components/Contacto.astro
+import { Image } from "astro:assets";
+import ellipseBg from "../assets/ellipse.png";
+---
+
+<section id="contacto" class="py-24 bg-white relative overflow-hidden">
+  <div class="max-w-4xl mx-auto px-6 relative z-10">
+    <div class="flex flex-col items-center mb-16">
+      <h2
+        class="font-lobster text-6xl text-yapaso-dark rotate-[-2deg] bg-yapaso-yellow px-8 py-4 rounded-[20px] shadow-xl"
+      >
+        Contactanos
+      </h2>
+      <p class="font-sans text-xl mt-6 text-center text-gray-700">
+        ¿Tenés dudas? Escribinos y te respondemos al toque.
+      </p>
+    </div>
+
+    <form
+      id="form-contacto"
+      class="bg-white p-8 md:p-12 rounded-[40px] shadow-[0_30px_60px_rgba(0,0,0,0.08)] border border-gray-100 flex flex-col gap-8 relative group/form"
+    >
+      <div class="relative flex flex-col gap-2 group">
+        <input
+          type="text"
+          name="nombre"
+          placeholder="Tu Nombre"
+          required
+          pattern="[A-Za-z ]{3,}"
+          class="peer font-sans w-full p-5 bg-white rounded-2xl border-2 border-gray-100 focus:border-yapaso-yellow focus:ring-4 focus:ring-yapaso-yellow/20 outline-none text-lg transition-all shadow-sm placeholder:text-gray-400"
+        />
+        <span
+          class="absolute -right-4 -top-4 bg-yapaso-dark text-white text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 peer-[:not(:placeholder-shown):invalid]:opacity-100 transition-opacity pointer-events-none rotate-6 z-20"
+        >
+          ¿Cómo te llamás? 🤔
+        </span>
+      </div>
+
+      <div class="relative flex flex-col gap-2 group">
+        <input
+          type="email"
+          name="email"
+          placeholder="Tu Email"
+          required
+          class="peer font-sans w-full p-5 bg-white rounded-2xl border-2 border-gray-100 focus:border-yapaso-yellow focus:ring-4 focus:ring-yapaso-yellow/20 outline-none text-lg transition-all shadow-sm placeholder:text-gray-400"
+        />
+        <span
+          class="absolute -right-4 -top-4 bg-yapaso-dark text-white text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 peer-[:not(:placeholder-shown):invalid]:opacity-100 transition-opacity pointer-events-none -rotate-6 z-20"
+        >
+          Ese mail no va che... 📧
+        </span>
+      </div>
+
+      <div class="relative flex flex-col gap-2 group">
+        <textarea
+          name="mensaje"
+          rows="4"
+          placeholder="Tu Consulta"
+          required
+          minlength="10"
+          class="peer font-sans w-full p-5 bg-white rounded-2xl border-2 border-gray-100 focus:border-yapaso-yellow focus:ring-4 focus:ring-yapaso-yellow/20 outline-none text-lg resize-none transition-all shadow-sm placeholder:text-gray-400"
+        ></textarea>
+        <span
+          class="absolute -right-4 -top-4 bg-yapaso-dark text-white text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 peer-[:not(:placeholder-shown):invalid]:opacity-100 transition-opacity pointer-events-none rotate-3 z-20"
+        >
+          Contanos un poco más ✍️
+        </span>
+      </div>
+
+      <button
+        type="submit"
+        id="btn-submit"
+        class="font-lobster text-3xl bg-yapaso-dark text-white py-6 rounded-2xl transition-all shadow-xl active:scale-95 cursor-pointer hover:bg-yapaso-yellow hover:text-yapaso-dark disabled:opacity-30 disabled:grayscale disabled:cursor-not-allowed disabled:shadow-none disabled:active:scale-100"
+      >
+        Enviar Mensaje
+      </button>
+    </form>
+  </div>
+</section>
+
+<script>
+  // Script para desactivar el botón si hay campos vacíos
+  const form = document.getElementById("form-contacto") as HTMLFormElement;
+  const btn = document.getElementById("btn-submit") as HTMLButtonElement;
+  const inputs = form?.querySelectorAll("input, textarea");
+
+  const checkInputs = () => {
+    let allFilled = true;
+    inputs?.forEach((input) => {
+      const el = input as HTMLInputElement | HTMLTextAreaElement;
+      if (el.required && !el.value.trim()) {
+        allFilled = false;
+      }
+    });
+
+    if (btn) btn.disabled = !allFilled;
+  };
+
+  // Escuchar cada vez que el usuario escribe
+  inputs?.forEach((input) => {
+    input.addEventListener("input", checkInputs);
+  });
+
+  // Ejecutar al cargar para que el botón arranque desactivado
+  checkInputs();
+</script>
+
+<style>
+  input:not(:placeholder-shown):invalid,
+  textarea:not(:placeholder-shown):invalid {
+    border-color: #fca5a5;
+  }
+</style>

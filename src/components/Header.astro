@@ -1,0 +1,93 @@
+---
+// src/components/Header.astro
+import { Image } from "astro:assets";
+import logoYapaso from "../assets/yapaso_logo.png";
+---
+
+<header
+  class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 h-20 flex items-center"
+>
+  <nav
+    class="relative max-w-7xl mx-auto px-6 w-full flex items-center justify-between"
+  >
+    <a href="/" class="flex items-center z-[60]">
+      <Image
+        src={logoYapaso}
+        alt="Ya Paso Logo"
+        class="h-9 md:h-10 w-auto object-contain transition-transform duration-300 hover:scale-105"
+        width={150}
+        height={50}
+        loading="eager"
+      />
+    </a>
+
+    <input type="checkbox" id="menu-toggle" class="peer hidden" />
+
+    <div
+      class="font-sans fixed md:static top-full mt-2 right-6 md:right-0 w-[280px] md:w-auto origin-top-right
+             bg-white md:bg-transparent flex flex-col md:flex-row items-start md:items-center justify-start md:justify-end gap-6 md:gap-8
+             p-8 md:p-0 rounded-3xl md:rounded-none opacity-0 md:opacity-100 scale-90 md:scale-100 pointer-events-none md:pointer-events-auto
+             peer-checked:opacity-100 peer-checked:scale-100 peer-checked:pointer-events-auto
+             transition-all duration-300 ease-out z-40
+             border border-yapaso-dark/10 md:border-none shadow-[0_15px_35px_rgba(0,0,0,0.1)] md:shadow-none"
+    >
+      <a
+        href="#beneficios"
+        class="text-xl md:text-base font-bold text-yapaso-dark hover:text-yapaso-yellow transition-colors tracking-tight"
+        >Beneficios</a
+      >
+      <a
+        href="#como-funciona"
+        class="text-xl md:text-base font-bold text-yapaso-dark hover:text-yapaso-yellow transition-colors tracking-tight"
+        >Cómo Funciona</a
+      >
+      <a
+        href="#contacto"
+        class="text-xl md:text-base font-bold text-yapaso-dark hover:text-yapaso-yellow transition-colors tracking-tight"
+        >Contacto</a
+      >
+
+      <a
+        href="https://dashboard.yapaso.app"
+        class="bg-yapaso-yellow text-yapaso-dark px-6 py-3 md:px-6 md:py-2.5 rounded-full font-bold
+               shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] border-2 border-yapaso-dark
+               hover:bg-yapaso-dark hover:text-white transition-all
+               active:translate-x-[2px] active:translate-y-[2px] active:shadow-none
+               text-lg md:text-sm text-center w-full md:w-auto mt-2 md:mt-0"
+      >
+        Acceder al dashboard
+      </a>
+    </div>
+
+    <label
+      for="menu-toggle"
+      class="md:hidden cursor-pointer z-[60] p-1.5 w-11 h-11 flex items-center justify-center bg-yapaso-accent-green border-2 border-yapaso-dark rounded-xl shadow-[3px_3px_0px_0px_rgba(26,26,26,1)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px] transition-all"
+    >
+      <div class="relative w-6 h-6">
+        <span
+          class="absolute w-6 h-0.5 bg-yapaso-dark top-0 left-0 transition-all duration-300 origin-center"
+          id="line1"></span>
+        <span
+          class="absolute w-6 h-0.5 bg-yapaso-dark top-2.5 left-0 transition-all duration-300"
+          id="line2"></span>
+        <span
+          class="absolute w-6 h-0.5 bg-yapaso-dark top-5 left-0 transition-all duration-300 origin-center"
+          id="line3"></span>
+      </div>
+    </label>
+  </nav>
+</header>
+
+<style>
+  /* Lógica para alternar iconos usando el checkbox hack en el CSS */
+  #menu-toggle:checked ~ nav label #line1 {
+    transform: translateY(10px) rotate(45deg);
+  }
+  #menu-toggle:checked ~ nav label #line2 {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  #menu-toggle:checked ~ nav label #line3 {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+</style>

@@ -1,0 +1,155 @@
+---
+// src/components/ComoFunciona.astro
+
+const pasos = [
+  {
+    num: "01",
+    titulo: "Bajate la App",
+    desc: "Buscá 'Ya Paso' en tu tienda de aplicaciones y registrate con tu mail institucional o personal en menos de un minuto.",
+  },
+  {
+    num: "02",
+    titulo: "Cargá tu Saldo",
+    desc: "Ingresá dinero a tu billetera virtual mediante Mercado Pago, transferencia o efectivo en los puntos autorizados del buffet.",
+  },
+  {
+    num: "03",
+    titulo: "Elegí tu Menú",
+    desc: "Explorá todas las categorías disponibles. Podés ver precios, stock en tiempo real y fotos de cada producto antes de comprar.",
+  },
+  {
+    num: "04",
+    titulo: "Confirmá y Pagá",
+    desc: "Pagá desde el aula con un solo click. Tu pedido entra directamente a la cocina del buffet para que empiecen a prepararlo.",
+  },
+  {
+    num: "05",
+    titulo: "Sabé cuándo ir, sin esperar",
+    desc: "Te avisamos cuando tu pedido entra, se prepara y está listo, para evitar filas.",
+  },
+  {
+    num: "06",
+    titulo: "Retirá y Disfrutá",
+    desc: "Acercate a la ventanilla de retiro rápido, mostrá tu número de pedidoy llevate tu comida. ¡Sin colas, sin esperas, todo para tu recreo!",
+  },
+];
+---
+
+<section
+  id="como-funciona"
+  class="py-24 md:py-32 bg-[#FAFAFA] relative overflow-hidden"
+>
+  <div
+    class="absolute top-20 right-[5%] text-yapaso-yellow opacity-10 rotate-12 pointer-events-none"
+  >
+    <svg class="w-40 h-40" viewBox="0 0 24 24" fill="currentColor"
+      ><path
+        d="M12 0C12 6 18 12 24 12C18 12 12 18 12 24C12 18 6 12 0 12C6 12 12 6 12 0Z"
+      ></path></svg
+    >
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="flex flex-col items-center text-center mb-24">
+      <h2
+        class="font-lobster text-5xl md:text-7xl text-yapaso-dark mb-4 drop-shadow-sm"
+      >
+        Así funciona la magia
+      </h2>
+      <div class="w-24 h-2.5 bg-yapaso-yellow rounded-full shadow-md"></div>
+    </div>
+
+    <div class="flex flex-col gap-10 relative">
+      <div
+        class="absolute left-[40px] md:left-[55px] top-10 bottom-10 w-1 bg-gray-200 rounded-full z-0 opacity-60"
+      >
+      </div>
+
+      {
+        pasos.map((paso, index) => (
+          <details
+            class="group bg-white rounded-3xl shadow-[0_15px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.1)] transition-all duration-300 open:bg-white border border-gray-100 relative z-10 -rotate-1 odd:rotate-1 hover:rotate-0"
+            open={index === 0}
+          >
+            <summary class="flex justify-between items-center cursor-pointer p-6 md:p-8 list-none [&::-webkit-details-marker]:hidden relative z-10">
+              <div class="flex items-center gap-6 md:gap-10">
+                <span class="font-lobster text-5xl md:text-7xl text-yapaso-yellow drop-shadow-[2px_2px_0px_rgba(0,0,0,0.1)]">
+                  {paso.num}
+                </span>
+                <span class="font-sans text-xl md:text-3xl font-bold text-yapaso-dark tracking-tight">
+                  {paso.titulo}
+                </span>
+              </div>
+
+              <div class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full text-yapaso-dark shadow-inner group-open:bg-yapaso-yellow group-open:text-yapaso-dark transition-all duration-300 group-open:rotate-180">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-7 h-7 group-open:hidden"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 4.5v15m7.5-7.5h-15"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-7 h-7 hidden group-open:block"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="3"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19.5 12h-15"
+                  />
+                </svg>
+              </div>
+            </summary>
+
+            <div class="px-6 md:px-8 pb-10 relative z-10 md:ml-28">
+              <div class="w-16 h-1 bg-yapaso-yellow rounded-full mb-6 opacity-60" />
+              <p class="font-sans text-gray-700 font-medium text-lg md:text-xl leading-relaxed max-w-4xl">
+                {paso.desc}
+              </p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* MANTENEMOS ANIMACIONES Y LÓGICA EXISTENTE */
+
+  /* Quitar el marcador por defecto en Firefox */
+  summary {
+    display: flex;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Animación suave al abrir (sweep) */
+  details[open] summary ~ * {
+    animation: sweep 0.4s ease-in-out forwards;
+  }
+
+  @keyframes sweep {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
