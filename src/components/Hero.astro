@@ -131,10 +131,25 @@ import bolsaCarton from "../assets/bolsa_carton.png";
     const userAgent = navigator.userAgent.toLowerCase();
     const isAndroid = /android/i.test(userAgent);
 
+    // Configuramos el botón según el sistema operativo
     if (isAndroid) {
       btn.innerText = "Descargar App";
       btn.href =
         "https://github.com/d4rkam/YaPasoApp/releases/latest/download/app-release.apk";
+
+      // Agregamos el atributo download (ayuda a algunos navegadores)
+      btn.setAttribute("download", "YaPaso.apk");
+
+      // --- EL TRUCO DEL FEEDBACK ---
+      btn.addEventListener("click", () => {
+        const originalText = btn.innerText;
+        btn.innerText = "Iniciando descarga... 🚀";
+
+        // Lo volvemos a la normalidad después de unos segundos
+        setTimeout(() => {
+          btn.innerText = originalText;
+        }, 5000);
+      });
     } else {
       btn.innerText = "Acceder a la App";
       btn.href = "https://app.yapaso.app";
