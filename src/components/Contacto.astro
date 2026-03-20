@@ -1,7 +1,5 @@
 ---
 // src/components/Contacto.astro
-import { Image } from "astro:assets";
-import ellipseBg from "../assets/ellipse.png";
 ---
 
 <section id="contacto" class="py-24 bg-white relative overflow-hidden">
@@ -48,7 +46,7 @@ import ellipseBg from "../assets/ellipse.png";
         <span
           class="absolute -right-4 -top-4 bg-yapaso-dark text-white text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 peer-[:not(:placeholder-shown):invalid]:opacity-100 transition-opacity pointer-events-none -rotate-6 z-20"
         >
-          Ese mail no va che... 📧
+          Ese email no va che... 📧
         </span>
       </div>
 
@@ -71,7 +69,12 @@ import ellipseBg from "../assets/ellipse.png";
       <button
         type="submit"
         id="btn-submit"
-        class="font-lobster text-3xl bg-yapaso-dark text-white py-6 rounded-2xl transition-all shadow-xl active:scale-95 cursor-pointer hover:bg-yapaso-yellow hover:text-yapaso-dark disabled:opacity-30 disabled:grayscale disabled:cursor-not-allowed disabled:shadow-none disabled:active:scale-100"
+        class="font-lobster text-3xl bg-white text-yapaso-dark py-6 rounded-xl border-2 border-yapaso-dark
+         shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] transition-all
+         hover:bg-yapaso-yellow
+         active:shadow-none active:translate-x-[2px] active:translate-y-[2px]
+         disabled:opacity-30 disabled:grayscale disabled:cursor-not-allowed disabled:shadow-none
+         disabled:active:translate-x-0 disabled:active:translate-y-0"
       >
         Enviar Mensaje
       </button>
@@ -79,11 +82,55 @@ import ellipseBg from "../assets/ellipse.png";
   </div>
 </section>
 
+<div
+  id="toast-container"
+  class="fixed bottom-10 left-1/2 -translate-x-1/2 z-[100] pointer-events-none transition-all duration-500 translate-y-20 opacity-0"
+>
+  <div
+    id="toast-card"
+    class="border-4 border-yapaso-dark px-6 py-4 flex items-center gap-4 shadow-[8px_8px_0px_0px_rgba(26,26,26,1)] min-w-[320px]"
+  >
+    <span id="toast-emoji" class="text-3xl"></span>
+    <p id="toast-message" class="font-sans font-bold text-lg text-yapaso-dark">
+    </p>
+  </div>
+</div>
+
 <script>
-  // Script para desactivar el botón si hay campos vacíos
   const form = document.getElementById("form-contacto") as HTMLFormElement;
   const btn = document.getElementById("btn-submit") as HTMLButtonElement;
   const inputs = form?.querySelectorAll("input, textarea");
+
+  // Elementos del Toast
+  const toastContainer = document.getElementById("toast-container");
+  const toastCard = document.getElementById("toast-card");
+  const toastMessage = document.getElementById("toast-message");
+  const toastEmoji = document.getElementById("toast-emoji");
+
+  const showToast = (msg: string, type: "success" | "error" = "success") => {
+    if (!toastContainer || !toastCard || !toastMessage || !toastEmoji) return;
+
+    toastMessage.innerText = msg;
+
+    // Estilo según el tipo
+    if (type === "success") {
+      toastCard.style.backgroundColor = "#FFE500"; // Tu amarillo yapaso
+      toastEmoji.innerText = "🚀";
+    } else {
+      toastCard.style.backgroundColor = "#FF6B6B"; // Un rojo vibrante que pegue
+      toastEmoji.innerText = "⚠️";
+    }
+
+    // Animación de entrada
+    toastContainer.classList.remove("translate-y-20", "opacity-0");
+    toastContainer.classList.add("translate-y-0", "opacity-100");
+
+    // Desaparece solo a los 4 segundos
+    setTimeout(() => {
+      toastContainer.classList.add("translate-y-20", "opacity-0");
+      toastContainer.classList.remove("translate-y-0", "opacity-100");
+    }, 4000);
+  };
 
   const checkInputs = () => {
     let allFilled = true;
@@ -93,17 +140,46 @@ import ellipseBg from "../assets/ellipse.png";
         allFilled = false;
       }
     });
-
     if (btn) btn.disabled = !allFilled;
   };
 
-  // Escuchar cada vez que el usuario escribe
   inputs?.forEach((input) => {
     input.addEventListener("input", checkInputs);
   });
 
-  // Ejecutar al cargar para que el botón arranque desactivado
   checkInputs();
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    const originalText = btn.innerText;
+    btn.innerText = "Enviando...";
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const API_URL = "https://api.yapaso.app/api/contact/send";
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        showToast("¡Mensaje enviado! Te respondemos al toque.");
+        form.reset();
+        checkInputs();
+      } else {
+        throw new Error();
+      }
+    } catch (err) {
+      showToast("Uh, falló el envío. Probá de nuevo.", "error");
+    } finally {
+      btn.disabled = false;
+      btn.innerText = originalText;
+    }
+  });
 </script>
 
 <style>

@@ -2,18 +2,26 @@
 @import "tailwindcss";
 
 /* Definimos las fuentes para Tailwind v4 usando las que ya tenés cargadas */
+/* src/styles/global.css */
+@import "tailwindcss";
+
+/* 1. Definición de fuentes locales */
 @font-face {
   font-family: 'Space Grotesk';
   src: url('/fonts/SpaceGrotesk-Regular.ttf') format('truetype');
   font-weight: 400;
+  font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Space Grotesk';
   src: url('/fonts/SpaceGrotesk-Bold.ttf') format('truetype');
   font-weight: 700;
+  font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Lobster';
   src: url('/fonts/Lobster-Regular.ttf') format('truetype');
@@ -25,11 +33,13 @@
   /* Paleta de colores exactos */
   --color-yapaso-yellow: #FFE500;
   --color-yapaso-dark: #1A1A1A;
-  --color-yapaso-light-blue: #AAC4FA; /* Azul pastel de los acentos */
+  --color-yapaso-light-blue: #AAC4FA; 
+  --color-yapaso-accent-green: #ADFF00;
   
   /* Fuentes configuradas */
-  --font-sans: 'Space Grotesk', sans-serif;
-  --font-lobster: 'Lobster', cursive;
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-lobster: "Lobster", cursive;
+  
 
   /* Animaciones custom para el Hero */
   --animate-orbit: dash 25s linear infinite;
@@ -49,7 +59,14 @@
   50% { transform: translateY(-15px) rotate(5deg); }
 }
 
-body {
-  font-family: var(--font-sans);
-  @apply antialiased bg-white text-yapaso-dark;
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    @apply antialiased bg-white text-yapaso-dark;
+  }
+  
+  /* Evita que los títulos Lobster salten a Times New Roman un segundo */
+  .font-lobster {
+    font-family: var(--font-lobster);
+  }
 }

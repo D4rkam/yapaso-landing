@@ -1,0 +1,67 @@
+---
+// src/components/Footer.astro
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-[#FAFAFA] pt-16 pb-8 px-6 relative overflow-hidden">
+  <div
+    class="absolute -top-10 -right-10 w-40 h-40 bg-yapaso-yellow rounded-full blur-3xl opacity-20 pointer-events-none"
+  >
+  </div>
+
+  <div class="max-w-7xl mx-auto flex flex-col items-center relative z-10">
+    <div class="text-center mb-10">
+      <h2
+        class="font-lobster text-5xl md:text-6xl text-yapaso-dark mb-4 transform -rotate-2 inline-block drop-shadow-sm"
+      >
+        Ya Paso
+      </h2>
+      <p class="font-sans text-gray-600 font-medium text-lg max-w-sm mx-auto">
+        El recreo es para disfrutar, no para hacer fila. 🍔⚡
+      </p>
+    </div>
+
+    <div
+      class="flex flex-col md:flex-row justify-center items-center gap-6 mb-16"
+    >
+      <a
+        href="#beneficios"
+        class="font-bold text-yapaso-dark hover:text-yapaso-yellow transition-colors"
+      >
+        Beneficios
+      </a>
+      <a
+        href="#como-funciona"
+        class="font-bold text-yapaso-dark hover:text-yapaso-yellow transition-colors"
+      >
+        Cómo funciona
+      </a>
+      <a
+        href="#contacto"
+        class="font-bold text-yapaso-dark hover:text-yapaso-yellow transition-colors"
+      >
+        Contacto
+      </a>
+
+      <a
+        href="https://instagram.com/app_yapaso"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-bold bg-yapaso-yellow text-yapaso-dark px-6 py-2.5 rounded-xl border-2 border-yapaso-dark shadow-[3px_3px_0px_0px_rgba(26,26,26,1)] hover:bg-yapaso-dark hover:text-white active:shadow-none active:translate-x-[2px] active:translate-y-[2px] transition-all md:ml-4 mt-4 md:mt-0"
+      >
+        Seguinos en Instagram
+      </a>
+    </div>
+
+    <div
+      class="w-full max-w-4xl bg-white border-2 border-yapaso-dark/5 px-6 py-5 rounded-2xl shadow-sm flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-gray-500 transition-all hover:border-yapaso-dark/10 hover:shadow-md"
+    >
+      <p>© {year} Ya Paso. Todos los derechos reservados.</p>
+      <p class="flex items-center gap-1">
+        Hecho con 💛 por <span class="font-bold text-yapaso-dark"
+          >Agustina y Thomas</span
+        >
+      </p>
+    </div>
+  </div>
+</footer>

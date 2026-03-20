@@ -3,6 +3,8 @@
 import { Image } from "astro:assets";
 // Reemplazá por tu asset real en src/assets/hero-phone.png
 import phoneMockup from "../assets/hero-phone.png";
+// Importamos tu nuevo icono de la bolsa
+import bolsaCarton from "../assets/bolsa_carton.png";
 ---
 
 <section
@@ -52,63 +54,41 @@ import phoneMockup from "../assets/hero-phone.png";
     </div>
 
     <div
-      class="relative flex justify-center items-center mt-16 md:mt-0 w-full min-h-[500px]"
+      class="relative flex justify-center items-center mt-16 md:mt-0 w-full min-h-[450px] md:min-h-[500px]"
     >
       <div
-        class="absolute inset-0 flex items-center justify-center pointer-events-none scale-125 md:scale-150 z-0"
+        class="absolute top-4 right-2 md:top-10 md:-right-4 z-0 animate-float-delayed scale-75 md:scale-100 origin-top-right"
       >
         <div
-          class="absolute -top-16 -left-16 flex items-end gap-3 rotate-[20deg]"
+          class="bg-yapaso-yellow border-4 border-yapaso-dark rounded-full px-6 py-2 rotate-12"
         >
-          <div class="w-14 h-14 rounded-full bg-yapaso-yellow drop-shadow-md">
-          </div>
-          <div class="w-8 h-8 rounded-full bg-yapaso-yellow drop-shadow-sm">
-          </div>
+          <span class="font-lobster text-xl text-yapaso-dark"
+            >¡Al toque! ⚡</span
+          >
         </div>
+      </div>
 
-        <div
-          class="absolute inset-0 z-0 [clip-path:polygon(0_0,100%_0,100%_48%,0_48%)]"
+      <div
+        class="absolute bottom-16 left-6 md:bottom-24 md:left-16 z-0 animate-float scale-75 md:scale-100 origin-bottom-left"
+      >
+        <svg
+          class="w-16 h-16 text-[#FFE500] drop-shadow-[4px_4px_0px_rgba(26,26,26,1)] animate-spin-slow"
+          viewBox="0 0 24 24"
+          fill="currentColor"
         >
-          <svg viewBox="0 0 400 400" class="w-full h-full opacity-60">
-            <g transform="translate(200,200) rotate(-15)">
-              <ellipse
-                cx="0"
-                cy="0"
-                rx="140"
-                ry="60"
-                fill="none"
-                stroke="#D1D5DB"
-                stroke-width="1.5"></ellipse>
-              <ellipse
-                cx="0"
-                cy="0"
-                rx="180"
-                ry="80"
-                fill="none"
-                stroke="#9CA3AF"
-                stroke-width="1.2"></ellipse>
-              <g class="animate-orbit">
-                <ellipse
-                  cx="0"
-                  cy="0"
-                  rx="140"
-                  ry="60"
-                  fill="none"
-                  stroke="#9CA3AF"
-                  stroke-width="1.2"
-                  stroke-dasharray="6 6"></ellipse>
-                <circle cx="140" cy="0" r="4" fill="#FFE500"></circle>
-              </g>
-            </g>
-          </svg>
-        </div>
+          <path
+            stroke="#1A1A1A"
+            stroke-width="1.5"
+            d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"
+          ></path>
+        </svg>
       </div>
 
       <div class="relative z-10 animate-float-phone">
         <Image
           src={phoneMockup}
           alt="App Ya Paso"
-          class="w-[260px] md:w-[310px] lg:w-[340px] h-auto drop-shadow-[0_25px_35px_rgba(0,0,0,0.2)] hover:scale-[1.02] transition-transform duration-500"
+          class="w-[220px] md:w-[310px] lg:w-[340px] h-auto drop-shadow-[0_25px_35px_rgba(0,0,0,0.2)] hover:scale-[1.02] transition-transform duration-500"
           width={720}
           height={1440}
           loading="eager"
@@ -116,42 +96,28 @@ import phoneMockup from "../assets/hero-phone.png";
       </div>
 
       <div
-        class="absolute inset-0 flex items-center justify-center pointer-events-none scale-125 md:scale-150 z-20"
+        class="absolute top-[40%] left-4 md:top-1/2 md:left-6 z-20 animate-float-fast scale-75 md:scale-100 origin-left"
       >
         <div
-          class="absolute inset-0 z-20 [clip-path:polygon(0_48%,100%_48%,100%_100%,0_100%)]"
+          class="w-16 h-16 bg-white border-2 border-yapaso-dark rounded-full shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] flex items-center justify-center -rotate-12"
         >
-          <svg viewBox="0 0 400 400" class="w-full h-full opacity-60">
-            <g transform="translate(200,200) rotate(-15)">
-              <ellipse
-                cx="0"
-                cy="0"
-                rx="140"
-                ry="60"
-                fill="none"
-                stroke="#D1D5DB"
-                stroke-width="1.5"></ellipse>
-              <g class="animate-orbit" style="animation-duration: 30s;">
-                <ellipse
-                  cx="0"
-                  cy="0"
-                  rx="180"
-                  ry="80"
-                  fill="none"
-                  stroke="#9CA3AF"
-                  stroke-width="1.2"
-                  stroke-dasharray="6 6"></ellipse>
-                <rect x="175" y="-5" width="12" height="8" rx="2" fill="#FFE500"
-                ></rect>
-              </g>
-              <g transform="translate(100, 120)">
-                <path
-                  d="M12 0C12 6 18 12 24 12C18 12 12 18 12 24C12 18 6 12 0 12C6 12 12 6 12 0Z"
-                  fill="#FFE500"
-                  class="animate-pulse"></path>
-              </g>
-            </g>
-          </svg>
+          <Image
+            src={bolsaCarton}
+            alt="Bolsa de pedido"
+            class="w-10 h-10 object-contain drop-shadow-sm"
+          />
+        </div>
+      </div>
+
+      <div
+        class="absolute bottom-20 right-4 md:bottom-32 md:-right-6 z-20 animate-float scale-75 md:scale-100 origin-bottom-right"
+      >
+        <div
+          class="bg-white border-4 border-yapaso-dark rounded-xl p-3 -rotate-6"
+        >
+          <span class="font-sans font-bold text-yapaso-dark text-sm"
+            >Sin filas 🏃‍♂️</span
+          >
         </div>
       </div>
     </div>
@@ -159,7 +125,6 @@ import phoneMockup from "../assets/hero-phone.png";
 </section>
 
 <script>
-  // Detección de plataforma para el botón del Hero
   const btn = document.getElementById("hero-cta-button") as HTMLAnchorElement;
 
   if (btn) {
@@ -168,10 +133,8 @@ import phoneMockup from "../assets/hero-phone.png";
 
     if (isAndroid) {
       btn.innerText = "Descargar App";
-      // Aquí pondrías el link al APK o Play Store cuando lo tengas
       btn.href = "#instalar";
     } else {
-      // Para IOS, Windows, etc.
       btn.innerText = "Acceder a la App";
       btn.href = "https://app.yapaso.app";
     }
@@ -179,21 +142,23 @@ import phoneMockup from "../assets/hero-phone.png";
 </script>
 
 <style>
-  .animate-orbit {
-    animation: orbit 20s linear infinite;
-    transform-origin: center;
-  }
-  @keyframes orbit {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
   .animate-float-phone {
     animation: float-phone 5s ease-in-out infinite;
   }
+
+  .animate-float {
+    animation: float-item 6s ease-in-out infinite;
+  }
+  .animate-float-delayed {
+    animation: float-item 6s ease-in-out 3s infinite;
+  }
+  .animate-float-fast {
+    animation: float-item 4s ease-in-out 1s infinite;
+  }
+  .animate-spin-slow {
+    animation: spin 15s linear infinite;
+  }
+
   @keyframes float-phone {
     0%,
     100% {
@@ -201,6 +166,25 @@ import phoneMockup from "../assets/hero-phone.png";
     }
     50% {
       transform: translateY(-15px) rotate(1.5deg);
+    }
+  }
+
+  @keyframes float-item {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
     }
   }
 </style>

@@ -7,31 +7,38 @@ import Beneficios from "../components/Beneficios.astro";
 import ComoFunciona from "../components/ComoFunciona.astro";
 import Equipo from "../components/Equipo.astro";
 import Contacto from "../components/Contacto.astro";
+import Footer from "../components/Footer.astro";
 
 // Datos para el Schema.org (puedes ajustarlos luego)
 const appSchema = {
   "@context": "https://schema.org",
-  "@type": "MobileApplication",
+  "@type": "SoftwareApplication",
   name: "Ya Paso",
-  operatingSystem: "Android, iOS",
-  applicationCategory: "FoodShoppingApplication",
+  operatingSystem: "Android, iOS, Web",
+  applicationCategory: "FoodApplication",
   offers: {
     "@type": "Offer",
     price: "0",
     priceCurrency: "ARS",
   },
-  description: "App para pedir comida en el buffet sin hacer filas.",
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5",
-    reviewCount: "10",
-  },
+  description:
+    "La aplicación definitiva para pedir y pagar en el buffet de tu colegio o facultad sin hacer filas.",
+  author: [
+    {
+      "@type": "Person",
+      name: "Agustina",
+    },
+    {
+      "@type": "Person",
+      name: "Thomas",
+    },
+  ],
 };
 ---
 
 <Layout
-  title="Ya Paso | Comprá en el buffet sin hacer fila"
-  description="Ya Paso es la app para estudiantes que te permite pedir y pagar tu comida en el buffet desde el celular. Evitá las filas y disfrutá más tu recreo."
+  title="Ya Paso | El Buffet en tu celular, sin filas"
+  description="Pedí tu comida en el buffet desde el aula y retirá sin esperar. La app para estudiantes que le gana tiempo al recreo."
 >
   <script
     type="application/ld+json"
@@ -48,5 +55,6 @@ const appSchema = {
     <ComoFunciona />
     <!-- <Equipo /> -->
     <Contacto />
+    <Footer />
   </main>
 </Layout>
