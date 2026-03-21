@@ -1,0 +1,32 @@
+---
+// src/pages/404.astro
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="404: Página no encontrada"
+  description="Ups, parece que te perdiste en el buffet."
+>
+  <main
+    class="flex flex-col items-center justify-center min-h-screen text-center px-6"
+  >
+    <h1
+      class="font-lobster text-8xl text-yapaso-yellow drop-shadow-[4px_4px_0px_rgba(26,26,26,1)]"
+    >
+      404
+    </h1>
+    <p class="mt-4 text-2xl font-bold text-yapaso-dark">
+      ¡Se nos terminó este pedido! 🍔
+    </p>
+    <p class="text-gray-500 mt-2 max-w-md">
+      La página que buscás no existe o se movió de lugar.
+    </p>
+
+    <a
+      href="/"
+      class="mt-10 bg-yapaso-yellow text-yapaso-dark font-bold px-8 py-3 rounded-full hover:scale-105 transition-transform shadow-lg"
+    >
+      Volver al inicio
+    </a>
+  </main>
+</Layout>
