@@ -3,6 +3,7 @@
 import "../styles/global.css";
 import "@fontsource/lobster";
 import "@fontsource/space-grotesk/700.css";
+import heroImageSource from "../assets/hero-phone.webp";
 
 interface Props {
   title: string;
@@ -43,6 +44,12 @@ const canonicalURL = new URL(Astro.url.pathname, "https://yapaso.app");
       as="font"
       type="font/ttf"
       crossorigin
+    />
+    <link
+      rel="preload"
+      href={heroImageSource.src}
+      as="image"
+      fetchpriority="high"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
