@@ -1,10 +1,8 @@
 ---
 // src/components/Hero.astro
 import { Image } from "astro:assets";
-// Reemplazá por tu asset real en src/assets/hero-phone.png
-import phoneMockup from "../assets/hero-phone.png";
-// Importamos tu nuevo icono de la bolsa
-import bolsaCarton from "../assets/bolsa_carton.png";
+import phoneMockup from "../assets/hero-phone.webp";
+import bolsaCarton from "../assets/bolsa_carton.webp";
 ---
 
 <section
@@ -45,7 +43,7 @@ import bolsaCarton from "../assets/bolsa_carton.png";
       <div class="mt-10">
         <a
           id="hero-cta-button"
-          href="https://app.yapaso.com.ar"
+          href="https://app.yapaso.app"
           class="inline-block bg-yapaso-yellow text-yapaso-dark font-bold text-xl md:text-2xl px-10 py-5 rounded-full shadow-[0_10px_30px_rgba(255,229,0,0.4)] hover:bg-yapaso-dark hover:text-white hover:scale-105 transition-all duration-300"
         >
           Acceder a la App
@@ -92,6 +90,7 @@ import bolsaCarton from "../assets/bolsa_carton.png";
           width={720}
           height={1440}
           loading="eager"
+          fetchpriority="high"
         />
       </div>
 
