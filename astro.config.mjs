@@ -12,4 +12,7 @@ export default defineConfig({
   },
   site: "https://yapaso.app",
   integrations: [sitemap()],
+  build: {
+    inlineStylesheets: "always",
+  },
 });
