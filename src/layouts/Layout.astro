@@ -14,7 +14,7 @@ interface Props {
 const {
   title,
   description,
-  image = "/og-image.webp", // Imagen por defecto en public/
+  image = "/og-image.png", // Imagen por defecto en public/
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, "https://yapaso.app");
@@ -49,7 +49,7 @@ const canonicalURL = new URL(Astro.url.pathname, "https://yapaso.app");
       rel="preload"
       href={heroImageSource.src}
       as="image"
-      fetchpriority="high"
+      type="image/webp"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
