@@ -32,19 +32,30 @@ import logoYapaso from "../assets/yapaso_logo.webp";
     >
       <a
         href="#beneficios"
-        class="text-xl md:text-base font-bold text-yapaso-dark hover:text-yapaso-yellow transition-colors tracking-tight"
+        class="nav-link text-xl md:text-base font-bold text-yapaso-dark hover:text-yapaso-yellow transition-colors tracking-tight"
         >Beneficios</a
       >
       <a
         href="#como-funciona"
-        class="text-xl md:text-base font-bold text-yapaso-dark hover:text-yapaso-yellow transition-colors tracking-tight"
+        class="nav-link text-xl md:text-base font-bold text-yapaso-dark hover:text-yapaso-yellow transition-colors tracking-tight"
         >Cómo Funciona</a
       >
+
       <a
         href="#contacto"
-        class="text-xl md:text-base font-bold text-yapaso-dark hover:text-yapaso-yellow transition-colors tracking-tight"
+        class="nav-link text-xl md:text-base font-bold text-yapaso-dark hover:text-yapaso-yellow transition-colors tracking-tight"
         >Contacto</a
       >
+
+      <a
+        href="#novedades"
+        class="nav-link text-xl md:text-base font-bold text-yapaso-dark hover:text-yapaso-yellow transition-colors tracking-tight relative"
+      >
+        Novedades
+        <span
+          class="absolute -top-1 -right-3 w-2 h-2 bg-yapaso-yellow rounded-full animate-pulse"
+        ></span>
+      </a>
 
       <a
         href="https://dashboard.yapaso.app"
@@ -77,8 +88,21 @@ import logoYapaso from "../assets/yapaso_logo.webp";
   </nav>
 </header>
 
+<script>
+  // Script para cerrar el menú móvil cuando se hace clic en un enlace
+  const navLinks = document.querySelectorAll(".nav-link");
+  const menuToggle = document.getElementById("menu-toggle") as HTMLInputElement;
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (menuToggle && menuToggle.checked) {
+        menuToggle.checked = false;
+      }
+    });
+  });
+</script>
+
 <style>
-  /* Lógica para alternar iconos usando el checkbox hack en el CSS */
   #menu-toggle:checked ~ nav label #line1 {
     transform: translateY(10px) rotate(45deg);
   }
