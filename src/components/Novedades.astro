@@ -10,7 +10,6 @@ todasLasNovedades.sort(
   (a: Novedad, b: Novedad) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 
-// 👇 TRUCO: Solo mostramos las últimas 3 actualizaciones en la landing
 const ultimasNovedades = todasLasNovedades.slice(0, 3);
 ---
 
@@ -59,7 +58,6 @@ const ultimasNovedades = todasLasNovedades.slice(0, 3);
               </div>
 
               <div class="w-[calc(100%-4rem)] sm:w-[calc(100%-5rem)] ml-auto md:ml-0 md:w-[calc(50%-4rem)] opacity-0 translate-y-10 transition-all duration-700 ease-out animation-target">
-                {/* 👇 ACÁ EMPIEZA LA MAGIA DEL ACORDEÓN 👇 */}
                 <details class="group bg-white rounded-[30px] sm:rounded-[40px] border-[3px] sm:border-4 border-yapaso-dark shadow-[6px_6px_0px_0px_#1A1A1A] md:shadow-[8px_8px_0px_0px_#1A1A1A] hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_#1A1A1A] md:hover:shadow-[12px_12px_0px_0px_#1A1A1A] transition-all overflow-hidden">
                   {/* El summary es la parte que siempre se ve y es clickeable */}
                   <summary class="p-6 sm:p-8 md:p-10 cursor-pointer list-none [&::-webkit-details-marker]:hidden relative select-none z-20 bg-white">
@@ -96,10 +94,7 @@ const ultimasNovedades = todasLasNovedades.slice(0, 3);
                       {novedad.data.title}
                     </h3>
                   </summary>
-
-                  {/* 👇 NUEVO CONTENEDOR GRID PARA LA ANIMACIÓN SUAVE 👇 */}
                   <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out group-open:grid-rows-[1fr] opacity-0 group-open:opacity-100 group-open:delay-100">
-                    {/* 👇 NUEVO ENVOLTORIO INTERNO (maneja padding/bordes suavemente) 👇 */}
                     <div class="min-h-0 px-6 pb-6 sm:px-8 sm:pb-8 md:px-10 md:pb-10 pt-2 border-t-2 border-dashed border-gray-200 mx-6 sm:mx-8 md:mx-10 mt-2">
                       <div class="prose prose-base sm:prose-lg mt-6 prose-p:font-sans prose-p:font-medium prose-p:text-gray-600 prose-p:leading-relaxed prose-li:font-sans prose-li:font-medium prose-li:text-gray-600 prose-strong:text-yapaso-dark prose-strong:font-black max-w-none marker:text-yapaso-yellow">
                         <Content />
@@ -107,7 +102,6 @@ const ultimasNovedades = todasLasNovedades.slice(0, 3);
                     </div>
                   </div>
                 </details>
-                {/* 👆 FIN DEL ACORDEÓN 👆 */}
               </div>
             </article>
           );
